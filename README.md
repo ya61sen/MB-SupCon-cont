@@ -24,11 +24,11 @@ There are three main folders in this repository. The detailed information of eac
 
 "`HFD`" folder includes the scripts and jupyter notebooks used to train MB-SupCon-cont models, generate lower-dimensional PCA scatter plots, visualize and summarize the results for High-Fat Diet study.
 
-"`Simulation`" folder includes the scripts and jupyter notebooks used to train MB-SupCon-cont models, visualize and summarize the results for simulation studies by Reversed PCA method.
+"`Simulation`" folder includes the scripts and jupyter notebooks used to generate simulation data, train MB-SupCon-cont models, visualize and summarize the results for simulation studies by Reversed PCA method.
 
 **Data**
 
-For "`T2D`" and "`HFD`" folders, all data used in this study is in "`./{STUDY}/data`", where `STUDY` $\in$ {`T2D`, `HFD`}.
+For "`T2D`" and "`HFD`" studies, all data used for each study can be found in "`./{STUDY}/data`", where `STUDY` $\in$ {`T2D`, `HFD`}.
 
 For simulations studies, we include the script to generate the simulated data.
 
@@ -42,9 +42,9 @@ a. Train MB-SupCon-cont models for different covaraites;
 
 *(Note: the best combination of hyperparameters are chosen based on the hyperparameter tuning result.)*
 
-b. Output and save corresponding feature embedding in the representation domain;
+b. Output and save corresponding feature embeddings in the representation domain;
 
-c. Make predictions of different covariates based on MB-SupCon-cont embeddings and original data, and calculate the average prediction RMSE on testing datasets from multiple training-validation-testing splits;
+c. Make predictions of different covariates based on MB-SupCon-cont embeddings and original data, and calculate the average prediction RMSE on testing data from multiple training-validation-testing splits;
 
 d. Generate scatter plots on lower-dimensional space by PCA.
 
@@ -58,11 +58,11 @@ d. Generate scatter plots on lower-dimensional space by PCA.
 
 - `utils_eval.py`: utility functions and classes.
 
-2.  Simulation studies. Each of the three subfolders is corresponding to an average correlation coefficient $\mu_{\rho}$, where $\mu_{\rho}\in\{0.4,0.6,0.8\}$. For each scenario, the only difference is:
+2.  Simulation studies. Each of the three subfolders corresponds to an average correlation coefficient $\mu_{\rho}$, where $\mu_{\rho}\in\{0.4,0.6,0.8\}$. For each scenario,
 
 `MB-SupCon-cont_simulation.py` is used to generate necessary simulation data, train MB-SupCon-cont models and make predictions.
 
-All other files are the same as those for real-world studies.
+All other files are the same as those used in the real-world studies.
 
 ## Implementation
 
@@ -122,7 +122,7 @@ Department of Public Health Sciences
 
 Penn State College of Medicine
 
-Hershy, PA 17033
+Hershey, PA 17033
 
 
 
