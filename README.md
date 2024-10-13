@@ -7,15 +7,11 @@ Advancements in multi-omics research have demonstrated the potential of integrat
 We present MB-SupCon-cont, a novel supervised contrastive learning framework designed for both categorical and continuous covariates in multi-omics data. MB-SupCon-cont improves prediction accuracy by incorporating a generalized contrastive loss function that defines similarity and dissimi-larity for continuous covariates. Through simulation studies and two real-world datasets for Type 2 Diabetes (T2D) and High-Fat Diet (HFD), we demonstrate that MB-SupCon-cont outperforms con-ventional models, consistently achieving lower prediction errors. The framework also provides su-perior representation learning, improving data visualization in lower-dimensional spaces. These findings suggest MB-SupCon-cont is a powerful tool for general multi-omics prediction purpose and can offer broad applicability in biomedical research.
 
 <p align="center">
-
-<img src="./framework.png" width="700"/>
-
+  <img src="./framework.png" width="700" />
 </p>
 
 <p align="center">
-
-<b>Fig.1</b> MB-SupCon-cont: A Generalized Supervised Contrastive Learning Framework
-
+  <b>Fig.1</b> MB-SupCon-cont: A Generalized Supervised Contrastive Learning Framework
 </p>
 
 ## About this repository
@@ -42,17 +38,17 @@ For simulations studies, we include the script to generate the simulated data.
 
 - `MB-SupCon-cont_training.py`: the main Python script used to:
 
-$\hspace{1cm}$a. Train MB-SupCon-cont models for different covaraites;
+a. Train MB-SupCon-cont models for different covaraites;
 
-$\hspace{1.2cm}$*(Note: the best combination of hyperparameters are chosen based on the hyperparameter tuning result.)*
+*(Note: the best combination of hyperparameters are chosen based on the hyperparameter tuning result.)*
 
-$\hspace{1cm}$b. Output and save corresponding feature embedding in the representation domain;
+b. Output and save corresponding feature embedding in the representation domain;
 
-$\hspace{1cm}$c. Make predictions of different covariates based on MB-SupCon-cont embeddings and original data, and calculate the average prediction RMSE on testing datasets from multiple training-validation-testing splits;
+c. Make predictions of different covariates based on MB-SupCon-cont embeddings and original data, and calculate the average prediction RMSE on testing datasets from multiple training-validation-testing splits;
 
-$\hspace{1cm}$d. Generate scatter plots on lower-dimensional space by PCA.
+d. Generate scatter plots on lower-dimensional space by PCA.
 
-$\hspace{1.2cm}$*(Note: you can choose other dimensionality reduction techniques, such as t-SNE and UMAP)*.
+*(Note: you can choose other dimensionality reduction techniques, such as t-SNE and UMAP)*.
 
 - `results_visualization_3.ipynb`: jupyter notebook used to visualize and summarize all the results.
 
@@ -64,11 +60,11 @@ $\hspace{1.2cm}$*(Note: you can choose other dimensionality reduction techniques
 
 2.  Simulation studies. Each of the three subfolders is corresponding to an average correlation coefficient $\mu_{\rho}$, where $\mu_{\rho}\in\{0.4,0.6,0.8\}$. For each scenario,
 
-$\hspace{1cm}$The only difference is:
+The only difference is:
 
-$\hspace{1cm}$`MB-SupCon-cont_simulation.py` is used to generate necessary simulation data, train MB-SupCon-cont models and make predictions.
+`MB-SupCon-cont_simulation.py` is used to generate necessary simulation data, train MB-SupCon-cont models and make predictions.
 
-$\hspace{1cm}$All other files are the same as those for real-world studies.
+All other files are the same as those for real-world studies.
 
 ## Implementation
 
@@ -76,15 +72,13 @@ We provide a python [conda](https://docs.conda.io/projects/conda/en/latest/user-
 
 All deep contrastive learning models are trained using [PyTorch](https://pytorch.org/). 
 
-- Version of Python and some important packages used in this repository:
+- System information and package versions:
 
-Python version: `3.8.5`.
+System: `Linux`;
+
+Python version: `3.8.5`;
 
 `pytorch`: `1.7.1` (Build: `py3.8_cuda11.0.221_cudnn8.0.5_0`);
-
-- System information:
-
-System: `Linux`; Release: `3.10.0-957.el7.x86_64`;
 
 GPU: `Tesla V100-SXM2-32GB`.
 
