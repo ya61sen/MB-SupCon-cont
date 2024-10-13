@@ -92,7 +92,7 @@ cd MB-SupCon-cont
 ### Create and import Conda Environment
 
 ```bash
-conda env create -f requirements.yml
+conda env create -f environment.yml
 source activate envir_MB-SupCon-cont
 ```
 
