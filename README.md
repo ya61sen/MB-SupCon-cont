@@ -58,9 +58,7 @@ d. Generate scatter plots on lower-dimensional space by PCA.
 
 - `utils_eval.py`: utility functions and classes.
 
-2.  Simulation studies. Each of the three subfolders is corresponding to an average correlation coefficient $\mu_{\rho}$, where $\mu_{\rho}\in\{0.4,0.6,0.8\}$. For each scenario,
-
-The only difference is:
+2.  Simulation studies. Each of the three subfolders is corresponding to an average correlation coefficient $\mu_{\rho}$, where $\mu_{\rho}\in\{0.4,0.6,0.8\}$. For each scenario, the only difference is:
 
 `MB-SupCon-cont_simulation.py` is used to generate necessary simulation data, train MB-SupCon-cont models and make predictions.
 
