@@ -37,11 +37,29 @@ matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
 # %%
-A, B = sys.argv[1:3]
-embedding_dim_dict = dict(zip(range(2), [10, 20]))
-weighting_method_dict = dict(zip(range(3), ['linear', 'exponential', 'negative-log']))
-EMBEDDING_DIM = embedding_dim_dict[int(A)]
-WEIGHTING_METHOD = weighting_method_dict[int(B)]
+import argparse
+
+# Create an argument parser
+parser = argparse.ArgumentParser(description="Training script for MB-SupCon with embedding and weighting options.")
+
+# Add arguments for embedding dimension
+parser.add_argument(
+    '-e', '--embedding_dim', type=int, required=True,
+    help="Set embedding dimension (e.g., 10, 20, 40, or any other positive integer)"
+)
+
+# Add arguments for weighting method
+parser.add_argument(
+    '-w', '--weighting_method', type=str, choices=['linear', 'exponential', 'negative-log'], required=True,
+    help="Select weighting method: 'linear', 'exponential', or 'negative-log'"
+)
+
+# Parse the arguments
+args = parser.parse_args()
+
+# Set embedding dimension and weighting method based on user input
+EMBEDDING_DIM = args.embedding_dim
+WEIGHTING_METHOD = args.weighting_method
 
 print("========================================================")
 print('EMBEDDING_DIM:', EMBEDDING_DIM)
@@ -76,7 +94,7 @@ print("# of samples: {}".format(len(indexes)))
 # ## 2 Train MB-SupCon-cont with different continuous covariates and store embeddings
 
 # %%
-DEVICE = "cuda:0"
+DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 N_EPOCH = 1000
 
 random_seed_list = range(1,13)
