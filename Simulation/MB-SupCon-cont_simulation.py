@@ -40,7 +40,7 @@ matplotlib.rcParams['ps.fonttype'] = 42
 import argparse
 
 # Create an argument parser
-parser = argparse.ArgumentParser(description="Training script for MB-SupCon with embedding and weighting options.")
+parser = argparse.ArgumentParser(description="Training script for MB-SupCon with embedding, weighting, and correlation coefficient options.")
 
 # Add arguments for embedding dimension
 parser.add_argument(
@@ -53,6 +53,11 @@ parser.add_argument(
     '-w', '--weighting_method', type=str, choices=['linear', 'exponential', 'negative-log'], required=True,
     help="Select weighting method: 'linear', 'exponential', or 'negative-log'"
 )
+# Add argument for correlation coefficient
+parser.add_argument(
+    '-c', '--correlation_coefficient', type=float, required=True,
+    help="Set average correlation coefficient (e.g., 0.4, 0.6, 0.8, etc.)"
+)
 
 # Parse the arguments
 args = parser.parse_args()
@@ -60,13 +65,15 @@ args = parser.parse_args()
 # Set embedding dimension and weighting method based on user input
 EMBEDDING_DIM = args.embedding_dim
 WEIGHTING_METHOD = args.weighting_method
+CORR = args.correlation_coefficient
 
 print("========================================================")
 print('EMBEDDING_DIM:', EMBEDDING_DIM)
 print('WEIGHTING_METHOD:', WEIGHTING_METHOD)
+print('CORR:', CORR)
 print("========================================================")
 
-SAVE_FOLDER = f'./emb_dim-{EMBEDDING_DIM}/{WEIGHTING_METHOD}_weights'
+SAVE_FOLDER = f'./corr{str(CORR).replace('.', '')}/emb_dim-{EMBEDDING_DIM}/{WEIGHTING_METHOD}_weights'
 os.makedirs(SAVE_FOLDER, exist_ok=True)
 
 # %% [markdown]
@@ -206,7 +213,6 @@ covariate_list = ['Age']
 ## From tuning
 max_idx = {'Age': (0, 2, 3)}
 
-CORR = 0.4
 random_seed_list = range(1,13)
 BATCH_SIZE = 35
 

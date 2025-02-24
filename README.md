@@ -108,7 +108,7 @@ python MB-SupCon-cont_training.py --embedding_dim 10 --weighting_method linear
 For simulation studies, you need to specify one more argument - the average correlation coefficient. Suppose we are running simulation studies when $\mu_{\rho}=0.4$, the embedding dimensionality is 10 and linear weighting method is used,
 
 ```bash
-cd Simulation/corr04
+cd Simulation
 python MB-SupCon-cont_simulation.py --embedding_dim 10 --weighting_method linear --correlation_coefficient 0.4
 ```
 
