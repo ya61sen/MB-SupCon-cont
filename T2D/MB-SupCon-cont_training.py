@@ -25,11 +25,12 @@ import pickle
 from mbsupcon_cont import MbSupConContModel
 
 # %%
-print(torch.cuda.is_available())
-print(torch.cuda.current_device())
-print(torch.cuda.device(0))
-print(torch.cuda.device_count())
-print(torch.cuda.get_device_name(0))
+if torch.cuda.is_available():
+    print("CUDA available.")
+    print("Current device:", torch.cuda.current_device())
+    print("Device name:", torch.cuda.get_device_name(0))
+else:
+    print("CUDA not available, using CPU")
 
 # %%
 import matplotlib
@@ -298,15 +299,15 @@ print(platform.release())
 import torch
 
 print(torch.cuda.is_available())
-print(torch.cuda.current_device())
-print(torch.cuda.device(0))
-print(torch.cuda.device_count())
-print(torch.cuda.get_device_name(0))
+if torch.cuda.is_available():
+    print(torch.cuda.current_device())
+    print(torch.cuda.device(0))
+    print(torch.cuda.device_count())
+    print(torch.cuda.get_device_name(0))
+else:
+    print("CUDA not available")
 
 # %%
 from platform import python_version
 
 print(python_version())
-
-# %%
-os.system("conda list -p /work/PCDC/s198665/conda_envs/envir_MB-SupCon")

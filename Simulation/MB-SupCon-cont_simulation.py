@@ -25,11 +25,12 @@ import pickle
 from mbsupcon_cont import MbSupConContModel
 
 # %%
-print(torch.cuda.is_available())
-print(torch.cuda.current_device())
-print(torch.cuda.device(0))
-print(torch.cuda.device_count())
-print(torch.cuda.get_device_name(0))
+if torch.cuda.is_available():
+    print("CUDA available.")
+    print("Current device:", torch.cuda.current_device())
+    print("Device name:", torch.cuda.get_device_name(0))
+else:
+    print("CUDA not available, using CPU")
 
 # %%
 import matplotlib
@@ -205,7 +206,7 @@ def generate_net_structure(input_dim, output_dim, n_linear_layers=4):
 # ### MB-SupCon-cont
 
 # %%
-DEVICE = "cuda:0"
+DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 N_EPOCH = 1000
 
 covariate_list = ['Age']
@@ -385,7 +386,7 @@ metabolome_rmse_original_dict = mse_to_rmse_dict(SAVE_FOLDER, 'metabolome_mse_or
 dim_reduction_list = ['pca']
 random_seed_list = [1]
 
-DEVICE = "cuda:0"
+DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 N_EPOCH = 1000
 covariate_list = ['Age']
 ## From tuning
@@ -470,17 +471,18 @@ print(platform.release())
 import torch
 
 print(torch.cuda.is_available())
-print(torch.cuda.current_device())
-print(torch.cuda.device(0))
-print(torch.cuda.device_count())
-print(torch.cuda.get_device_name(0))
+if torch.cuda.is_available():
+    print(torch.cuda.current_device())
+    print(torch.cuda.device(0))
+    print(torch.cuda.device_count())
+    print(torch.cuda.get_device_name(0))
+else:
+    print("CUDA not available")
 
 # %%
 from platform import python_version
 
 print(python_version())
 
-# %%
-os.system("conda list -p /work/PCDC/s198665/conda_envs/envir_MB-SupCon")
 
 
