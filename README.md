@@ -6,38 +6,26 @@
 </p>
 
 <p align="center">
-<b>Figure 1.</b> Overview of the MB-SupCon-cont framework for integrative multi-omics prediction.
+Figure 1. Overview of the MB-SupCon-cont framework for integrative multi-omics prediction.
 </p>
 
 ---
 
 ## Overview
 
-Advancements in **multi-omics research** have demonstrated the importance of integrating multiple biological data modalities—such as **microbiome** and **metabolomics**—to better understand physiological processes and improve predictive modeling in biomedical studies.
+Advancements in multi-omics research have demonstrated the importance of integrating multiple biological data modalities, such as microbiome and metabolomics, to better understand physiological processes and improve predictive modeling in biomedical studies.
 
-Traditional single-omics models often fail to capture the complexity of biological systems. While recent **supervised contrastive learning frameworks** have improved prediction for **categorical outcomes**, extending these approaches to **continuous covariates** remains challenging.
+Traditional single-omics models often fail to capture the complexity of biological systems. Recent supervised contrastive learning frameworks have improved predictive performance for categorical outcomes, but extending these approaches to continuous covariates remains challenging.
 
-**MB-SupCon-cont** addresses this gap.
+MB-SupCon-cont is a supervised contrastive learning framework designed for both categorical and continuous covariates in multi-omics data. The model improves prediction accuracy by incorporating a generalized contrastive loss function that defines similarity and dissimilarity relationships for continuous covariates.
 
-This repository implements **MB-SupCon-cont**, a generalized supervised contrastive learning framework that:
-
-- Supports **both categorical and continuous outcomes**
-- Improves **multi-omics predictive performance**
-- Learns **high-quality representations**
-- Enhances **low-dimensional visualization**
-
-Through **simulation studies** and two real datasets:
-
-- **Type 2 Diabetes (T2D)**
-- **High-Fat Diet (HFD)**
-
-MB-SupCon-cont consistently achieves **lower prediction errors** than conventional methods.
+Using simulation studies and two real-world datasets (Type 2 Diabetes and High-Fat Diet), MB-SupCon-cont consistently achieves lower prediction errors than conventional models while providing improved representation learning for downstream visualization.
 
 ---
 
-# Repository Structure
+## Repository Structure
 
-The repository contains three main project components.
+The repository contains three main components.
 
 ```
 MB-SupCon-cont/
@@ -49,34 +37,33 @@ MB-SupCon-cont/
 
 ### T2D
 
-Contains scripts and notebooks for:
+Scripts and notebooks used to:
 
-- Training MB-SupCon-cont models
-- Generating embeddings
-- PCA visualization
-- Result summarization
+- train MB-SupCon-cont models  
+- generate embeddings  
+- produce PCA visualizations  
+- summarize prediction results
 
 ### HFD
 
-Same workflow as the T2D study, applied to the **High-Fat Diet dataset**.
+Contains the same analysis pipeline applied to the High-Fat Diet dataset.
 
 ### Simulation
 
-Simulation experiments evaluating model performance under different correlation structures.
+Simulation experiments evaluating model performance under different correlation structures.  
+Each subfolder corresponds to an average correlation coefficient
 
-Each subfolder corresponds to an **average correlation coefficient**
-
-$begin:math:display$
-\\mu\_\{\\rho\} \\in \\\{0\.4\, 0\.6\, 0\.8\\\}
-$end:math:display$
+$$
+\mu_{\rho} \in \{0.4, 0.6, 0.8\}
+$$
 
 ---
 
-# Data
+## Data
 
-### Real-world datasets
+### Real-world studies
 
-For **T2D** and **HFD** studies:
+For the T2D and HFD datasets, all data required for each study are located in
 
 ```
 ./{STUDY}/data
@@ -88,80 +75,74 @@ where
 STUDY ∈ {T2D, HFD}
 ```
 
-contains all necessary input data.
-
 ### Simulation data
 
-Simulation datasets are **generated automatically** by the provided scripts.
+Simulation datasets are generated automatically by the provided scripts.
 
 ---
 
-# Code Description
+## Code Description
 
-## Real-World Studies (`T2D` and `HFD`)
+### Real-world studies (T2D and HFD)
 
 Key scripts include:
 
-### `MB-SupCon-cont_training.py`
+`MB-SupCon-cont_training.py`
 
-Main script for:
+Main script used to
 
-- Training MB-SupCon-cont models
-- Exporting learned **feature embeddings**
-- Predicting covariates
-- Computing **average RMSE** across train/validation/test splits
-- Generating **PCA visualization plots**
+- train MB-SupCon-cont models for different covariates  
+- output feature embeddings in the representation space  
+- make predictions using embeddings and original data  
+- compute average prediction RMSE across train/validation/test splits  
+- generate PCA scatter plots for visualization
 
-Alternative dimensionality reduction methods can also be used:
+Other dimensionality reduction methods such as t-SNE and UMAP can also be applied.
 
-- **t-SNE**
-- **UMAP**
+`results_visualization_3.ipynb`
 
-### `results_visualization_3.ipynb`
+Notebook used to summarize and visualize prediction results.
 
-Notebook for summarizing and visualizing results.
+`supervised_loss.py`
 
-### `supervised_loss.py`
+Implementation of the supervised contrastive loss function.
 
-Implements the **supervised contrastive loss function**.
+`mbsupcon_cont.py`
 
-### `mbsupcon_cont.py`
+Model architecture for the MB-SupCon-cont framework.
 
-Core implementation of the **MB-SupCon-cont model architecture**.
+`utils_eval.py`
 
-### `utils_eval.py`
-
-Utility functions for evaluation and analysis.
+Utility functions for evaluation and result processing.
 
 ---
 
-## Simulation Studies
+### Simulation studies
 
-Each simulation folder corresponds to a different **average correlation coefficient**.
+Each simulation folder corresponds to a specific average correlation coefficient.
 
-Main script:
+The main script
 
 ```
 MB-SupCon-cont_simulation.py
 ```
 
-Functions:
+is used to
 
-- Generate simulation datasets
-- Train MB-SupCon-cont models
-- Evaluate predictive performance
+- generate simulated datasets  
+- train MB-SupCon-cont models  
+- evaluate prediction performance
 
-Other files are shared with the real-data pipelines.
+Other supporting scripts are shared with those used in the real-data analyses.
 
 ---
 
-# Installation
+## Installation
 
-We provide a **Conda environment** for reproducibility.
+A conda environment is provided for reproducibility.  
+All deep learning models are implemented using PyTorch.
 
-All deep learning models are implemented using **PyTorch**.
-
-## System configuration used in experiments
+### System configuration used in experiments
 
 | Component | Version |
 |---|---|
@@ -172,18 +153,16 @@ All deep learning models are implemented using **PyTorch**.
 
 ---
 
-# Quick Start
+## Quick Start
 
-## Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/ya61sen/MB-SupCon-cont.git
 cd MB-SupCon-cont
 ```
 
----
-
-## Create the Conda environment
+### Create the conda environment
 
 ```bash
 conda env create -f environment.yml
@@ -192,14 +171,11 @@ conda activate envir_MB-SupCon-cont
 
 ---
 
-# Training MB-SupCon-cont
+## Training the model
 
-## Example: T2D Study
+### Example: T2D study
 
-Train the model with:
-
-- embedding dimension = 10
-- linear weighting method
+Train the model with embedding dimension 10 and linear weighting.
 
 ```bash
 cd T2D
@@ -208,15 +184,13 @@ python MB-SupCon-cont_training.py \
     --weighting_method linear
 ```
 
----
+### Example: simulation study
 
-## Example: Simulation Study
+For simulation experiments with
 
-When:
-
-- embedding dimension = 10
-- weighting method = linear
-- average correlation coefficient = 0.4
+- embedding dimension 10  
+- linear weighting  
+- average correlation coefficient 0.4
 
 ```bash
 cd Simulation
@@ -228,10 +202,9 @@ python MB-SupCon-cont_simulation.py \
 
 ---
 
-# Contact
+## Contact
 
-**Sen Yang**
-
+Sen Yang  
 Department of Public Health Sciences  
 Penn State College of Medicine  
 Hershey, PA, USA
@@ -239,12 +212,10 @@ Hershey, PA, USA
 Email:
 
 - sky5218@psu.edu  
-- syang4@pennstatehealth.psu.edu
+- syang4@pennstatehealth.psu.edu  
 
 ---
 
 ## Citation
 
-If you use this code in your research, please cite the corresponding manuscript.
-
-*(Citation will be added once the paper is published.)*
+If you use this repository in your research, please cite the associated manuscript once it becomes publicly available.
