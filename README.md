@@ -17,7 +17,7 @@ Advancements in multi-omics research have demonstrated the importance of integra
 
 Traditional single-omics models often fail to capture the complexity of biological systems. Recent supervised contrastive learning frameworks have improved predictive performance for categorical outcomes, but extending these approaches to continuous covariates remains challenging.
 
-MB-SupCon-cont is a supervised contrastive learning framework designed for both categorical and continuous covariates in multi-omics data. The model improves prediction accuracy by incorporating a generalized contrastive loss function that defines similarity and dissimilarity relationships for continuous covariates.
+**MB-SupCon-cont** is a supervised contrastive learning framework designed for both categorical and continuous covariates in multi-omics data. The model improves prediction accuracy by incorporating a generalized contrastive loss function that defines similarity and dissimilarity relationships for continuous covariates.
 
 Using simulation studies and two real-world datasets (Type 2 Diabetes and High-Fat Diet), MB-SupCon-cont consistently achieves lower prediction errors than conventional models while providing improved representation learning for downstream visualization.
 
